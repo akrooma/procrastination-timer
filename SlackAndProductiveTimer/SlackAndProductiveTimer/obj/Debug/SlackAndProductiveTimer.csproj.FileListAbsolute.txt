@@ -1,0 +1,14 @@
+C:\Users\Kristjan\Documents\My projects\SlackAndProductiveTimer\SlackAndProductiveTimer\bin\Debug\SlackAndProductiveTimer.exe.config
+C:\Users\Kristjan\Documents\My projects\SlackAndProductiveTimer\SlackAndProductiveTimer\bin\Debug\SlackAndProductiveTimer.exe
+C:\Users\Kristjan\Documents\My projects\SlackAndProductiveTimer\SlackAndProductiveTimer\bin\Debug\SlackAndProductiveTimer.pdb
+C:\Users\Kristjan\Documents\My projects\SlackAndProductiveTimer\SlackAndProductiveTimer\obj\Debug\SlackAndProductiveTimer.csprojResolveAssemblyReference.cache
+C:\Users\Kristjan\Documents\My projects\SlackAndProductiveTimer\SlackAndProductiveTimer\obj\Debug\MainWindow.g.cs
+C:\Users\Kristjan\Documents\My projects\SlackAndProductiveTimer\SlackAndProductiveTimer\obj\Debug\App.g.cs
+C:\Users\Kristjan\Documents\My projects\SlackAndProductiveTimer\SlackAndProductiveTimer\obj\Debug\SlackAndProductiveTimer_MarkupCompile.cache
+C:\Users\Kristjan\Documents\My projects\SlackAndProductiveTimer\SlackAndProductiveTimer\obj\Debug\SlackAndProductiveTimer_MarkupCompile.lref
+C:\Users\Kristjan\Documents\My projects\SlackAndProductiveTimer\SlackAndProductiveTimer\obj\Debug\MainWindow.baml
+C:\Users\Kristjan\Documents\My projects\SlackAndProductiveTimer\SlackAndProductiveTimer\obj\Debug\SlackAndProductiveTimer.g.resources
+C:\Users\Kristjan\Documents\My projects\SlackAndProductiveTimer\SlackAndProductiveTimer\obj\Debug\SlackAndProductiveTimer.Properties.Resources.resources
+C:\Users\Kristjan\Documents\My projects\SlackAndProductiveTimer\SlackAndProductiveTimer\obj\Debug\SlackAndProductiveTimer.csproj.GenerateResource.Cache
+C:\Users\Kristjan\Documents\My projects\SlackAndProductiveTimer\SlackAndProductiveTimer\obj\Debug\SlackAndProductiveTimer.exe
+C:\Users\Kristjan\Documents\My projects\SlackAndProductiveTimer\SlackAndProductiveTimer\obj\Debug\SlackAndProductiveTimer.pdb

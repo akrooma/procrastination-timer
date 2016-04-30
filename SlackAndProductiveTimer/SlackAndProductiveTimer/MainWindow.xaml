@@ -1,0 +1,26 @@
+﻿<Window x:Class="SlackAndProductiveTimer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SlackAndProductiveTimer"
+        mc:Ignorable="d"
+        Title="Slack and productive timers" Height="350" Width="525">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="58*"/>
+            <ColumnDefinition Width="459*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="161*"/>
+            <RowDefinition Height="158*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="productiveButton" Content="Start" HorizontalAlignment="Left" Height="48" Margin="293.235,55,0,0" VerticalAlignment="Top" Width="108" Grid.Row="1" Click="productiveButton_Click" Grid.Column="1"/>
+        <Button x:Name="slackButton" Content="Start" HorizontalAlignment="Left" Height="48" Margin="293.235,66,0,0" VerticalAlignment="Top" Width="108" Click="slackButton_Click" Grid.Column="1"/>
+        <Label x:Name="slackLabel" Content="Slack timer" HorizontalAlignment="Left" Height="30" Margin="26,33,0,0" VerticalAlignment="Top" Width="131" Grid.ColumnSpan="2"/>
+        <Label x:Name="slackTimer" Content="timer" HorizontalAlignment="Left" Height="30" Margin="26,84,0,0" VerticalAlignment="Top" Width="131" Grid.ColumnSpan="2"/>
+        <Label x:Name="productiveLabel" Content="Schoolstuff timer" HorizontalAlignment="Left" Height="29" Margin="26,17,0,0" VerticalAlignment="Top" Width="131" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <Label x:Name="productiveTimer" Content="timer" HorizontalAlignment="Left" Height="28" Margin="26,75,0,0" VerticalAlignment="Top" Width="131" Grid.Row="1" Grid.ColumnSpan="2"/>
+
+    </Grid>
+</Window>
