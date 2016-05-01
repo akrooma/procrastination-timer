@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
@@ -23,12 +24,12 @@ namespace SlackAndProductiveTimer
     /// </summary>
     public partial class MainWindow : Window
     {
-        private int slackHour, slackMinute, prodHour, prodMinute;
-        private Boolean productiveTimerOn, slackTimerOn;
-        private ProdButtonEnum prodButtonJob;
-        private SlackButtonEnum slackButtonJob;
+        private int _slackHour, _slackMinute, _prodHour, _prodMinute;
+        private Boolean _productiveTimerOn, _slackTimerOn;
+        //private ProdButtonEnum prodButtonJob;
+        //private SlackButtonEnum slackButtonJob;
 
-        private DispatcherTimer timer;
+        private DispatcherTimer _timer;
 
         public MainWindow()
         {
@@ -38,110 +39,156 @@ namespace SlackAndProductiveTimer
 
         private void timer_Tick(object sender, EventArgs e)
         { 
-            if (slackTimerOn)
+            if (_slackTimerOn)
             {
-                slackMinute += 1;
+                _slackMinute += 1;
 
-                if (slackMinute == 60)
+                if (_slackMinute == 60)
                 {
-                    slackHour += 1;
-                    slackMinute = 0;
+                    _slackHour += 1;
+                    _slackMinute = 0;
+                } else if (_slackHour == 24)
+                {
+                    _slackHour = 0;
                 }
 
-                slackTimer.Content = string.Format("{0}:{1}", slackHour.ToString().PadLeft(2, '0'), 
-                    slackMinute.ToString().PadLeft(2, '0'));
+                updateSlackTimer();
 
-            } else if (productiveTimerOn)
+            } else if (_productiveTimerOn)
             {
-                prodMinute += 1;
+                _prodMinute += 1;
 
-                if (prodMinute == 60)
+                if (_prodMinute == 60)
                 {
-                    prodHour += 1;
-                    prodMinute = 0;
+                    _prodHour += 1;
+                    _prodMinute = 0;
+                } else if (_prodHour == 24)
+                {
+                    _prodHour = 0;
                 }
 
-                productiveTimer.Content = string.Format("{0}:{1}", prodHour.ToString().PadLeft(2, '0'),
-                    prodMinute.ToString().PadLeft(2, '0'));
+                updateProductiveTimer();
             }
         }
 
         private void productiveButton_Click(object sender, RoutedEventArgs e)
         {
-            switch (prodButtonJob)
+            if (!_productiveTimerOn)
             {
-                case ProdButtonEnum.Start:
-                    if (!slackTimerOn)
-                    {
-                        timer.Start();
-                    }
-                    else
-                    {
-                        setPausedSlackTimerSettings();
-                    }
+                if (!_slackTimerOn)
+                {
+                    _timer.Start();
+                }
+                else
+                {
+                    setPausedSlackTimerSettings();
+                }
 
-                    setStartedProdTimerSettings();
-                    break;
-
-                case ProdButtonEnum.Pause:
-                    timer.Stop();
-                    setPausedProdTimerSettings();
-                    
-                    break;
+                setStartedProdTimerSettings();
+            }
+            else
+            {
+                _timer.Stop();
+                setPausedProdTimerSettings();
             }
         }
 
         private void slackButton_Click(object sender, RoutedEventArgs e)
         {
-            switch (slackButtonJob)
+            if (!_slackTimerOn)
             {
-                case SlackButtonEnum.Start:
-                    if (!productiveTimerOn)
-                    {
-                        timer.Start();
-                    }
-                    else
-                    {
-                        setPausedProdTimerSettings();
-                    }
+                if (!_productiveTimerOn)
+                {
+                    _timer.Start();
+                }
+                else
+                {
+                    setPausedProdTimerSettings();
+                }
 
-                    setStartedSlackTimerSettings();
-                    break;
-
-                case SlackButtonEnum.Pause:
-                    timer.Stop();
-                    setPausedSlackTimerSettings();
-
-                    break;
+                setStartedSlackTimerSettings();
             }
+            else
+            {
+                _timer.Stop();
+                setPausedSlackTimerSettings();
+            }
+        }
+
+        private void addSlackTimeButton_Click(object sender, RoutedEventArgs e)
+        {
+            int hour, minute;
+
+            if (int.TryParse(slackHourTextBox.Text, out hour) && int.TryParse(slackMinuteTextBox.Text, out minute) && !_slackTimerOn)
+            {
+                if ((_slackMinute += minute) > 59)
+                {
+                    _slackHour++;
+                    _slackMinute -= 60;
+                }
+
+                _slackHour += hour;
+                
+                updateSlackTimer();
+            }
+        }
+
+        private void addProductiveTimeButton_Click(object sender, RoutedEventArgs e)
+        {
+            int hour, minute;
+
+            if (int.TryParse(productiveHourTextBox.Text, out hour) && int.TryParse(productiveMinuteTextBox.Text, out minute) && !_productiveTimerOn)
+            {
+                if ((_prodMinute += minute) > 59)
+                {
+                    _prodHour++;
+                    _prodMinute -= 60;
+                }
+
+                _prodHour += hour;
+
+                updateProductiveTimer();
+            }
+        }
+
+        private void updateSlackTimer()
+        {
+            slackTimer.Content = string.Format("{0} : {1}", _slackHour.ToString().PadLeft(2, '0'),
+                _slackMinute.ToString().PadLeft(2, '0'));
+        }
+
+        private void updateProductiveTimer()
+        {
+            productiveTimer.Content = string.Format("{0} : {1}", _prodHour.ToString().PadLeft(2, '0'),
+                _prodMinute.ToString().PadLeft(2, '0'));
         }
 
         private void setPausedSlackTimerSettings()
         {
-            slackTimerOn = false;
+            _slackTimerOn = false;
             slackButton.Content = "Start";
-            slackButtonJob = SlackButtonEnum.Start;
+            //slackButtonJob = SlackButtonEnum.Start;
         }
 
         private void setStartedSlackTimerSettings()
         {
-            slackTimerOn = true;
+            _slackTimerOn = true;
             slackButton.Content = "Pause";
-            slackButtonJob = SlackButtonEnum.Pause;
+            //slackButtonJob = SlackButtonEnum.Pause;
         }
 
         private void setPausedProdTimerSettings()
         {
-            productiveTimerOn = false;
+            _productiveTimerOn = false;
             productiveButton.Content = "Start";
-            prodButtonJob = ProdButtonEnum.Start;
+            //prodButtonJob = ProdButtonEnum.Start;
         }
 
         private void setStartedProdTimerSettings()
         {
-            productiveTimerOn = true;
+            _productiveTimerOn = true;
             productiveButton.Content = "Pause";
-            prodButtonJob = ProdButtonEnum.Pause;
+            //prodButtonJob = ProdButtonEnum.Pause;
         }
 
         /// <summary>
@@ -149,14 +196,14 @@ namespace SlackAndProductiveTimer
         /// </summary>
         private void init()
         {
-            timer = new DispatcherTimer();
-            timer.Tick += new EventHandler(timer_Tick);
-            timer.Interval = new TimeSpan(0, 1, 0);
+            _timer = new DispatcherTimer();
+            _timer.Tick += new EventHandler(timer_Tick);
+            _timer.Interval = new TimeSpan(0, 0, 1);
 
-            slackHour = slackMinute = prodHour = prodMinute = 0;
-            productiveTimerOn = slackTimerOn = false;
-            prodButtonJob = ProdButtonEnum.Start;
-            slackButtonJob = SlackButtonEnum.Start;
+            _slackHour = _slackMinute = _prodHour = _prodMinute = 0;
+            _productiveTimerOn = _slackTimerOn = false;
+            //prodButtonJob = ProdButtonEnum.Start;
+            //slackButtonJob = SlackButtonEnum.Start;
         }
     }
 }

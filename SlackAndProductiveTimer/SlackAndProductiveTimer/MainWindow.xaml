@@ -15,12 +15,20 @@
             <RowDefinition Height="161*"/>
             <RowDefinition Height="158*"/>
         </Grid.RowDefinitions>
-        <Button x:Name="productiveButton" Content="Start" HorizontalAlignment="Left" Height="48" Margin="293.235,55,0,0" VerticalAlignment="Top" Width="108" Grid.Row="1" Click="productiveButton_Click" Grid.Column="1"/>
-        <Button x:Name="slackButton" Content="Start" HorizontalAlignment="Left" Height="48" Margin="293.235,66,0,0" VerticalAlignment="Top" Width="108" Click="slackButton_Click" Grid.Column="1"/>
-        <Label x:Name="slackLabel" Content="Slack timer" HorizontalAlignment="Left" Height="30" Margin="26,33,0,0" VerticalAlignment="Top" Width="131" Grid.ColumnSpan="2"/>
+        <Button x:Name="productiveButton" Content="Start" HorizontalAlignment="Left" Height="24" Margin="178,17,0,0" VerticalAlignment="Top" Width="91" Click="productiveButton_Click" Grid.Column="1" Grid.Row="1"/>
+        <Button x:Name="slackButton" Content="Start" HorizontalAlignment="Left" Height="24" Margin="178,39,0,0" VerticalAlignment="Top" Width="91" Click="slackButton_Click" Grid.Column="1"/>
+        <Label x:Name="slackLabel" Content="Slack timer (hh : mm)" HorizontalAlignment="Left" Height="30" Margin="26,33,0,0" VerticalAlignment="Top" Width="131" Grid.ColumnSpan="2"/>
         <Label x:Name="slackTimer" Content="timer" HorizontalAlignment="Left" Height="30" Margin="26,84,0,0" VerticalAlignment="Top" Width="131" Grid.ColumnSpan="2"/>
-        <Label x:Name="productiveLabel" Content="Schoolstuff timer" HorizontalAlignment="Left" Height="29" Margin="26,17,0,0" VerticalAlignment="Top" Width="131" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <Label x:Name="productiveLabel" Content="Schoolstuff timer (hh : mm)" HorizontalAlignment="Left" Height="29" Margin="26,17,0,0" VerticalAlignment="Top" Width="160" Grid.Row="1" Grid.ColumnSpan="2"/>
         <Label x:Name="productiveTimer" Content="timer" HorizontalAlignment="Left" Height="28" Margin="26,75,0,0" VerticalAlignment="Top" Width="131" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="productiveHourTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="178,75,0,0" Grid.Row="1" TextWrapping="Wrap" Text="hh" VerticalAlignment="Top" Width="39"/>
+        <TextBox x:Name="productiveMinuteTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="230,75,0,0" Grid.Row="1" TextWrapping="Wrap" Text="mm" VerticalAlignment="Top" Width="39"/>
+        <Label x:Name="label" Content=":" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="217,73,0,0" Grid.Row="1" VerticalAlignment="Top" Width="13"/>
+        <Label x:Name="label_Copy" Content=":" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="215,84,0,0" VerticalAlignment="Top" Width="13"/>
+        <TextBox x:Name="slackHourTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="176,86,0,0" TextWrapping="Wrap" Text="hh" VerticalAlignment="Top" Width="39"/>
+        <TextBox x:Name="slackMinuteTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="228,86,0,0" TextWrapping="Wrap" Text="mm" VerticalAlignment="Top" Width="39"/>
+        <Button x:Name="addProductiveTimeButton" Content="Add time" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="297,75,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="addProductiveTimeButton_Click"/>
+        <Button x:Name="addSlackTimeButton" Content="Add time" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="297,86,0,0" VerticalAlignment="Top" Width="75" Click="addSlackTimeButton_Click"/>
 
     </Grid>
 </Window>
