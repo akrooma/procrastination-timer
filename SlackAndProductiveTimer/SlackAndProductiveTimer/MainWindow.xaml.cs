@@ -198,7 +198,7 @@ namespace SlackAndProductiveTimer
         {
             _timer = new DispatcherTimer();
             _timer.Tick += new EventHandler(timer_Tick);
-            _timer.Interval = new TimeSpan(0, 0, 1);
+            _timer.Interval = new TimeSpan(0, 1, 0);
 
             _slackHour = _slackMinute = _prodHour = _prodMinute = 0;
             _productiveTimerOn = _slackTimerOn = false;
