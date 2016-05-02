@@ -15,6 +15,7 @@ namespace SlackAndProductiveTimer.Models
         {
             _hour = 0;
             _minute = 0;
+            IsActive = false;
         }
 
         public void incrementMinute(int minute)
@@ -42,5 +43,7 @@ namespace SlackAndProductiveTimer.Models
                 _minute.ToString().PadLeft(2, '0'));
             }
         }
+
+        public bool IsActive { get; set; }
     }
 }
